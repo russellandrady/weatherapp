@@ -35,7 +35,7 @@ const DisplayWeather = () => {
     null
   );
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
-  const [searchCity, setSearchCity] = React.useState<string>("");
+  const [searchCity, setSearchCity] = React.useState("");
   const fetchCurrentWeather = async (lat: number, lon: number) => {
     const url = `${api_Endpoint}weather?lat=${lat}&lon=${lon}&appid=${api_key}&units=metric`;
     const response = await axios.get(url);
@@ -47,7 +47,7 @@ const DisplayWeather = () => {
       const searchResponse = await axios.get(url);
 
       const currentWeatherData: WeatherDataProps = searchResponse.data;
-      return {currentWeatherData};
+      return { currentWeatherData };
     } catch (error) {
       console.error("No data was found");
       throw error;
@@ -58,8 +58,8 @@ const DisplayWeather = () => {
       return;
     }
     try {
-      const {currentWeatherData} = await fetchWeatherData(searchCity);
-      setWeatherData(currentWeatherData)
+      const { currentWeatherData } = await fetchWeatherData(searchCity);
+      setWeatherData(currentWeatherData);
     } catch (error) {
       console.error("No data was found");
     }
